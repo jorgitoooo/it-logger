@@ -4,21 +4,21 @@
       "id": 1,
       "message": "Changed hard drive on workstation 005",
       "attention": false,
-      "date": "03-02-2019",
+      "date": "2019-05-31T15:46:10.179Z",
       "tech": "Sam Smith"
     },
     {
       "id": 2,
       "message": "Workstation 007 not responding",
       "attention": true,
-      "date": "03-03-2019",
+      "date": "2019-05-31T16:18:04.245Z",
       "tech": "John Doe"
     },
     {
       "id": 3,
       "message": "Changed memory on workstation 050",
       "attention": false,
-      "date": "03-06-2019",
+      "date": "2019-05-31T15:46:48.690Z",
       "tech": "Jane Wilson"
     }
   ],
