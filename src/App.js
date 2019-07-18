@@ -4,6 +4,8 @@ import 'materialize-css/dist/css/materialize.min.css';
 import M from 'materialize-css/dist/js/materialize.min.js';
 
 import './App.css';
+import { Provider } from 'react-redux';
+import store from './store';
 
 import AddBtn from './components/layout/AddBtn';
 import SearchBar from './components/layout/SearchBar';
@@ -21,17 +23,19 @@ const App = () => {
   });
 
   return (
-    <Fragment>
-      <SearchBar />
-      <div className='container'>
-        <AddBtn />
-        <AddLogModal />
-        <AddTechModal />
-        <EditLogModal />
-        <TechListModal />
-        <Logs />
-      </div>
-    </Fragment>
+    <Provider store={store}>
+      <Fragment>
+        <SearchBar />
+        <div className='container'>
+          <AddBtn />
+          <AddLogModal />
+          <AddTechModal />
+          <EditLogModal />
+          <TechListModal />
+          <Logs />
+        </div>
+      </Fragment>
+    </Provider>
   );
 };
 
