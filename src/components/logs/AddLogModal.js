@@ -12,8 +12,13 @@ const AddLogModal = ({ addLog }) => {
   const [tech, setTech] = useState('');
 
   const onSubmit = () => {
+    // May cause probs. if materialize changes name of id
+    const toasters = document.getElementById('toast-container');
+
     if (message === '' || tech === '') {
-      M.toast({ html: 'Please enter a message and a tech' });
+      if (toasters === null) {
+        M.toast({ html: 'Please enter a message and a tech' });
+      }
     } else {
       const newLog = {
         message,
@@ -24,6 +29,12 @@ const AddLogModal = ({ addLog }) => {
 
       addLog(newLog);
       M.toast({ html: `Log added by ${tech}` });
+
+      const modalEl = document.getElementById('add-log-modal');
+      const instance = M.Modal.getInstance(modalEl);
+
+      // Modal will only close on submit if message && tech are not empty
+      instance.close();
 
       clearFields();
     }

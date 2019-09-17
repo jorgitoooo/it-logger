@@ -15,8 +15,8 @@ const AddTechModal = () => {
         M.toast({ html: "Please enter technician's first and last name" });
       }
     } else {
-      const modalEl = document.getElementById('add-log-modal');
-      let instance = M.Modal.getInstance(modalEl);
+      const modalEl = document.getElementById('add-tech-modal');
+      const instance = M.Modal.getInstance(modalEl);
 
       console.log(firstName, lastName);
       // Modal will only close on submit if message && tech are not empty
