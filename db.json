@@ -15,18 +15,18 @@
       "date": "2019-09-17T19:11:13.428Z"
     },
     {
-      "message": "New log",
-      "attention": true,
-      "tech": "Sam Smith",
-      "date": "2019-09-17T18:42:44.659Z",
-      "id": 4
-    },
-    {
       "id": 5,
       "message": "Anoder one - (Typo)",
       "attention": true,
       "tech": "John Doe",
       "date": "2019-09-17T18:48:20.010Z"
+    },
+    {
+      "message": "YOOO",
+      "attention": true,
+      "tech": "Jane Wilson",
+      "date": "2019-09-17T19:17:42.591Z",
+      "id": 6
     }
   ],
   "techs": [

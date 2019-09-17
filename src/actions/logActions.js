@@ -6,7 +6,8 @@ import {
   DELETE_LOG,
   UPDATE_LOG,
   SET_CURRENT,
-  CLEAR_CURRENT
+  CLEAR_CURRENT,
+  SEARCH_LOGS
 } from './types';
 
 // Get logs from server
@@ -14,7 +15,7 @@ export const getLogs = () => async dispatch => {
   try {
     setLoading();
 
-    await fetch('/logs')
+    fetch('/logs')
       .then(res => res.json())
       .then(data =>
         dispatch({
@@ -35,7 +36,7 @@ export const addLog = log => async dispatch => {
   try {
     setLoading();
 
-    await fetch('/logs', {
+    fetch('/logs', {
       method: 'POST',
       body: JSON.stringify(log),
       headers: {
@@ -62,7 +63,7 @@ export const deleteLog = id => async dispatch => {
   try {
     setLoading();
 
-    await fetch(`/logs/${id}`, {
+    fetch(`/logs/${id}`, {
       method: 'DELETE'
     });
 
@@ -79,11 +80,11 @@ export const deleteLog = id => async dispatch => {
 };
 
 // Update log on server
-export const updateLog = log => async disptach => {
+export const updateLog = log => async dispatch => {
   try {
     setLoading();
 
-    await fetch(`/logs/${log.id}`, {
+    fetch(`/logs/${log.id}`, {
       method: 'PUT',
       body: JSON.stringify(log),
       headers: {
@@ -92,13 +93,34 @@ export const updateLog = log => async disptach => {
     })
       .then(res => res.json())
       .then(_log =>
-        disptach({
+        dispatch({
           type: UPDATE_LOG,
           payload: _log
         })
       );
   } catch (err) {
-    disptach({
+    dispatch({
+      type: LOGS_ERROR,
+      payload: err.response.data
+    });
+  }
+};
+
+// Search logs on server
+export const searchLogs = text => async dispatch => {
+  try {
+    setLoading();
+
+    fetch(`/logs?q=${text}`)
+      .then(res => res.json())
+      .then(data => {
+        dispatch({
+          type: SEARCH_LOGS,
+          payload: data
+        });
+      });
+  } catch (err) {
+    dispatch({
       type: LOGS_ERROR,
       payload: err.response.data
     });
