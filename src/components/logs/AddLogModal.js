@@ -1,28 +1,29 @@
 import React, { useState } from 'react';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 
 import M from 'materialize-css/dist/js/materialize.min.js';
 
-const AddLogModal = () => {
+import { addLog } from '../../actions/logActions';
+
+const AddLogModal = ({ addLog }) => {
   const [message, setMessage] = useState('');
   const [attention, setAttention] = useState(false);
   const [tech, setTech] = useState('');
 
   const onSubmit = () => {
-    // May cause probs. if materialize changes name of id
-    const toasters = document.getElementById('toast-container');
-    console.log(toasters);
-
     if (message === '' || tech === '') {
-      if (toasters === null) {
-        M.toast({ html: 'Please enter a message and a tech' });
-      }
+      M.toast({ html: 'Please enter a message and a tech' });
     } else {
-      const modalEl = document.getElementById('add-log-modal');
-      let instance = M.Modal.getInstance(modalEl);
+      const newLog = {
+        message,
+        attention,
+        tech,
+        date: new Date()
+      };
 
-      console.log(message, tech, attention);
-      // Modal will only close on submit if message && tech are not empty
-      instance.close();
+      addLog(newLog);
+      M.toast({ html: `Log added by ${tech}` });
 
       clearFields();
     }
@@ -103,4 +104,11 @@ const modalStyle = {
   height: '75%'
 };
 
-export default AddLogModal;
+AddLogModal.propTypes = {
+  addLog: PropTypes.func.isRequired
+};
+
+export default connect(
+  null,
+  { addLog }
+)(AddLogModal);
