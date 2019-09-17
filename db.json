@@ -1,20 +1,5 @@
 {
-  "logs": [
-    {
-      "message": "Log 1",
-      "attention": true,
-      "tech": "Sam Smith",
-      "date": "2019-09-16T00:35:06.070Z",
-      "id": 1
-    },
-    {
-      "message": "Log 2",
-      "attention": true,
-      "tech": "John Doe",
-      "date": "2019-09-16T00:35:29.502Z",
-      "id": 2
-    }
-  ],
+  "logs": [],
   "techs": [
     {
       "id": 1,
